@@ -1,8 +1,8 @@
+<?php include "Table_maslo.php"; ?>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="dist/css/bootstrap.min.css" >	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <?php
-	include "Table_maslo.php";
 	
 	// -----------------------------------Обработчик формы регитсрации-----------------------------
 	if(isset($_POST['do_signup']))

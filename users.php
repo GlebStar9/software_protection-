@@ -177,9 +177,7 @@
 		<div id="vol"></div>
 
 		
-		<script>
-			
-		</script>
+
 		<script src="js/dropdown.js"></script>
 		<script src="js/modal.js"></script>
 		<script src="dist/css/bootstrap.min.js"></script>

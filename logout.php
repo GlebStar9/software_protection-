@@ -1,7 +1,6 @@
 <?php 
-	//print_r($_SESSION);
-	//session_unset();
+	session_start();
 	session_destroy();
-    header('Location: /');
+	include "index.php";
     exit;
 ?>

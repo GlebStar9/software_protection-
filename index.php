@@ -47,7 +47,9 @@
 			</div>
 			<br>
 			<div id="vol"></div>
-			<a type="button"  href="/logout.php">Выйти</a>
+			<center>
+				<a type="button"  href="/logout.php">Выйти</a>
+			</center>
 			
 		<!-----------------------Если мы еще не атаризованы ----------------------------->
 		<?php else: ?>
@@ -71,12 +73,10 @@
 							$pas = $bd_xleb->query("SELECT password FROM maslo WHERE login = '$log'");
 							$pass = $pas->fetch(PDO::FETCH_ASSOC);
 							foreach($pass as $i)
-							{
 								$pas=$i;
-							}
 							if(password_verify($_POST['password'],$pas))// сравнение введенного пароля с существующим
 							{
-								//Здесь будут сессии
+								$_SESSION['logged_user'] = $log;								
 							}
 							else
 							{
@@ -87,7 +87,8 @@
 						if(empty($errors))
 						{
 							// все хорошо
-							echo '<div style = "color: green;">'."Авторизация прошла успешно!".'</div><hr>';
+							include "index.php";
+							exit;
 						}
 						else
 						{

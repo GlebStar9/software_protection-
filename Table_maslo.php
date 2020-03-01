@@ -12,5 +12,5 @@
 	catch(PDOException $exception){
 		echo "Проблема с подключением: " . $exception->getMessage();
 	}
-	//session_start();
+	session_start();
 ?>
