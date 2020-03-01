@@ -57,8 +57,45 @@
 				<?php 
 					if(isset($_POST['do_login']))
 					{
-						
-						$_SESSION['logged_user'] = "efef";
+						//Проверка существования ЛОГИНА
+						$log = $_POST['login'];
+						$res = $bd_xleb->query("SELECT login FROM maslo WHERE login = '$log'");
+						$records = $res->fetchall(PDO::FETCH_ASSOC);
+						if(!$records) 
+						{
+							$errors[]='Пользователя с таким логином не существует';
+						}
+						else
+						{
+							//проверка пароля
+							$pas = $bd_xleb->query("SELECT password FROM maslo WHERE login = '$log'");
+							$pass = $pas->fetch(PDO::FETCH_ASSOC);
+							foreach($pass as $i)
+							{
+								$pas=$i;
+							}
+							if(password_verify($_POST['password'],$pas))// сравнение введенного пароля с существующим
+							{
+								//Здесь будут сессии
+							}
+							else
+							{
+								$errors[]='Неверно введен пароль';
+							}
+						}
+						//Вывод ошибок или подтверждения авторизации
+						if(empty($errors))
+						{
+							// все хорошо
+							echo '<div style = "color: green;">'."Авторизация прошла успешно!".'</div><hr>';
+						}
+						else
+						{
+							echo '<div style = "color: red;">';
+							foreach($errors as $a)echo $a.'<br>'; 
+							echo '</div><hr>';
+						}
+						#$_SESSION['logged_user'] = "efef";
 					}
 				?>
 				<!------------------------------ Форма Авторизация -------------------------->

@@ -1,6 +1,6 @@
 <?php
 	$host_xleb = "localhost";
-	$db_name_xleb = "Xleb";
+	$db_name_xleb = "xleb";
 	$username_xleb = "root";
 	$password_xleb = "";
 	// Подключение к базе данных
