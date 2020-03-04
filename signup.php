@@ -5,23 +5,23 @@
 <?php
 	
 	// -----------------------------------Обработчик формы регитсрации-----------------------------
-	if(isset($_POST['do_signup']))
+	if(isset($_POST['go']))
 	{
-		if(trim ($_POST['login'])=='') // проверка логина
+		if(trim ($_POST['sugar'])=='') // проверка логина
 		{
 			$errors[]='Введите логин!';
 		}
-		if($_POST['password']=='')  // проверка пароля 
+		if($_POST['cheese']=='')  // проверка пароля 
 		{
 			$errors[]='Введите пароль!';
 		}
-		if($_POST['password2'] != $_POST['password']) // проверка пароля с повторным паролем
+		if($_POST['tomato'] != $_POST['cheese']) // проверка пароля с повторным паролем
 		{
 			$errors[]='Повторный пароль введен не верно ';
 		}
 		//Проверка существования ЛОГИНА
-		$log = $_POST['login'];
-		$res = $bd_xleb->query("SELECT login FROM maslo WHERE login = '$log'");
+		$sug = $_POST['sugar'];
+		$res = $bd_xleb->query("SELECT login FROM maslo WHERE login = '$sug'");
 		$records = $res->fetchall(PDO::FETCH_ASSOC);
 		if($records) 
 		{
@@ -31,9 +31,9 @@
 		if(empty($errors))
 		{
 			// все хорошо
-			$login = $_POST['login'];
-			$password = password_hash($_POST['password'],PASSWORD_DEFAULT);
-			$res = $bd_xleb->query("insert into maslo (login, password) values ('$login', '$password')");
+			$sug  = $_POST['sugar'];
+			$ches = password_hash($_POST['cheese'],PASSWORD_DEFAULT);
+			$res = $bd_xleb->query("insert into maslo (login, password) values ('$sug ', '$ches')");
 			echo '<div style = "color: green;">'."Регистрация прошла успешно!".'</div><hr>';
 		}
 		else
@@ -50,21 +50,21 @@
 
 	<p>
 		<p><stgong>Логин</stgong></p>
-		<input type = "text" name = "login" value = "<?php echo @$_POST['login'];?>">
+		<input type = "text" name = "sugar" value = "<?php echo @$_POST['sugar'];?>">
 	</p>
 	
 	<p>
 		<p><stgong>Пароль</stgong></p>
-		<input type = "password" name = "password" value = "<?php echo @$_POST['password'];?>">
+		<input type = "password" name = "cheese" value = "<?php echo @$_POST['cheese'];?>">
 	</p>
 	
 	<p>
 		<p><stgong>Введите пароль повторно</stgong></p>
-		<input type = "password" name = "password2" value = "<?php echo @$_POST['password2'];?>">
+		<input type = "password" name = "tomato" value = "<?php echo @$_POST['tomato'];?>">
 	</p>
 	
 	<p>
-		<button type = "submit" name = "do_signup" class="btn btn-primary">Зарегистрироваться</button>
+		<button type = "submit" name = "go" class="btn btn-primary">Зарегистрироваться</button>
 	</p>
 </form>
 </center>

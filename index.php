@@ -57,30 +57,45 @@
 				
 				<!------------------------------ Обработчик формы авторизации и запуск сессии по аккаунтом -------------------------->
 				<?php 
-					if(isset($_POST['do_login']))
+					if(isset($_POST['go']))
 					{
 						//Проверка существования ЛОГИНА
-						$log = $_POST['login'];
-						$res = $bd_xleb->query("SELECT login FROM maslo WHERE login = '$log'");
+						$sug = $_POST['sugar'];
+						$res = $bd_xleb->query("SELECT login FROM maslo WHERE login = '$sug'");
 						$records = $res->fetchall(PDO::FETCH_ASSOC);
 						if(!$records) 
 						{
-							$errors[]='Пользователя с таким логином не существует';
+							if(trim ($_POST['sugar'])=='') // проверка логина
+							{
+								$errors[]='Введите логин!';
+							}
+							else
+							{
+								$errors[]='Пользователя с таким логином не существует';
+							}
+							if($_POST['cheese']=='')  // проверка пароля 
+							{
+								$errors[]='Введите пароль!';
+							}
 						}
 						else
 						{
 							//проверка пароля
-							$pas = $bd_xleb->query("SELECT password FROM maslo WHERE login = '$log'");
-							$pass = $pas->fetch(PDO::FETCH_ASSOC);
+							$ches = $bd_xleb->query("SELECT password FROM maslo WHERE login = '$sug'");
+							$pass = $ches->fetch(PDO::FETCH_ASSOC);
 							foreach($pass as $i)
-								$pas=$i;
-							if(password_verify($_POST['password'],$pas))// сравнение введенного пароля с существующим
+								$ches=$i;
+							if(password_verify($_POST['cheese'],$ches))// сравнение введенного пароля с существующим
 							{
-								$_SESSION['logged_user'] = $log;								
+								$_SESSION['logged_user'] = $sug;								
 							}
 							else
-							{
-								$errors[]='Неверно введен пароль';
+							{ 
+								if($_POST['cheese']=='')  // проверка пароля 
+								{
+									$errors[]='Введите пароль!';
+								}
+								else $errors[]='Неверно введен пароль';
 							}
 						}
 						//Вывод ошибок или подтверждения авторизации
@@ -103,16 +118,16 @@
 				<form action="index.php" method = "POST"> 
 					<p>
 						<p><stgong>Логин</stgong></p>
-						<input type = "text" name = "login" value = "<?php echo @$_POST['login'];?>">
+						<input type = "text" name = "sugar" value = "<?php echo @$_POST['sugar'];?>">
 					</p>
 					
 					<p>
 						<p><stgong>Пароль</stgong></p>
-						<input type = "password" name = "password" value = "<?php echo @$_POST['password'];?>">
+						<input type = "password" name = "cheese" value = "<?php echo @$_POST['cheese'];?>">
 					</p>
 					
 					<p>
-						<button type = "submit" name = "do_login" class="btn btn-primary">Войти</button>
+						<button type = "submit" name = "go" class="btn btn-primary">Войти</button>
 					</p>
 				</form>
 			
