@@ -7,7 +7,7 @@
 	$p_xleb = "";
 	// Подключение к базе данных
 	try {
-		$bd_xleb = new PDO("mysql:host={$host_xleb};dbname={$db_name_xleb};", $username_xleb, $password_xleb);
+		$bd_xleb = new PDO("mysql:host={$h_xleb};dbname={$db_name_xleb};", $u_xleb, $p_xleb);
 		$bd_xleb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}  
 	// Ошибка 
