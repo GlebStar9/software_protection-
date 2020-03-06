@@ -1,7 +1,9 @@
 <?php
-	$host_xleb = "localhost";
-	$db_name_xleb = "xleb";
-	$username_xleb = "root";
+	$fh = fopen("D:/testo.txt", "r");
+    list($f1,$f2,$f3)= fscanf($fh, "%s %s %s");
+	$host_xleb = "$f1";
+	$db_name_xleb = "$f2";
+	$username_xleb = "$f3";
 	$password_xleb = "";
 	// Подключение к базе данных
 	try {
