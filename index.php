@@ -15,7 +15,7 @@
 			<!-- Навбар-->
 			<ul class="nav nav-tabs">
 				<li role="navigation" class="active" ><a href="#">Запросы MySQL</a></li>
-				<li role="navigation"><a href="users.php">Базы данных</a></li>
+				<li role="navigation"><a href="/users.php">Базы данных</a></li>
 			</ul>
 			
 			
