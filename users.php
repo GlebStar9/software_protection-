@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="dist/css/bootstrap.min.css" >			
     </head>
 	<body>
-		<?php if(isset($_SESSION['logged_user'])):?>
+		<?php if(isset($_COOKIE["user"])):?>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 			<!--<script src ="prob.js"></script>-->
 			<script src ="spisok.js"></script>
@@ -181,8 +181,8 @@
 				<a type="button"  href="/logout.php">Выйти</a>
 			</center>
 		<?php else:
-		include "index.php";
-		exit;	
+			include "index.php";
+			exit;	
 		?>
 		<?php endif; ?>
 		

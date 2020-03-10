@@ -1,7 +1,8 @@
 <?php include "Table_maslo.php"; ?>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="dist/css/bootstrap.min.css" >	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="dist/css/bootstrap.min.css" >	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/Style.css"> 
 <?php
 	
 	// -----------------------------------Обработчик формы регитсрации-----------------------------
@@ -35,6 +36,8 @@
 			$ches = password_hash($_POST['cheese'],PASSWORD_DEFAULT);
 			$res = $bd_xleb->query("insert into maslo (login, password) values ('$sug ', '$ches')");
 			echo '<div style = "color: green;">'."Регистрация прошла успешно!".'</div><hr>';
+			include "index.php";
+			exit;	
 		}
 		else
 		{
