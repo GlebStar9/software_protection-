@@ -4,7 +4,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <!-----------------------Форма заполения поля регитсрации----------------------------->
 <center>
+	
 	<form  action="/OBR_signup.php" method = "POST"> 
+	<p><h3>Регистрация пользователя</h3></p>
+	<p><h6>Вы на шаг ближе к тому, чтобы стать частью нашего маленького сайта</h6></p><br><br>
 		<div id = "log" class = "has-error">
 			<input type = "text"  placeholder="Введите логин" id ="sugar" name = "sugar" value = "<?php echo @$_POST['sugar'];?>">
 			<span id ="gly1" class = "glyphicon glyphicon-remove"></span>

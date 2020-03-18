@@ -57,28 +57,34 @@
 			<center>
 				<!------------------------------ Форма Авторизация -------------------------->
 				<form action="autorise.php" method = "POST"> 
+					<h3>Добро пожаловать на наш сайт!</h3>
+					<p><h5>Авторизируйтесь, чтобы начать работу</h5></p><br><br><br>
+					<div id = "Alog" class = "has-error">
+						<!---<p><stgong>Логин</stgong></p>--->
+						<input type = "text" placeholder="Введите логин" id ="Asugar" name = "sugar" value = "<?php echo @$_POST['sugar'];?>">
+						<span id ="msg1" class = "glyphicon glyphicon-remove"></span>
+					</div>
+					<br>
+					<div id = "Apor" class = "has-error">
+						<!---<p><stgong>Пароль</stgong></p>--->
+						<input type = "password" placeholder="Введите пароль" id = "Acheese" name = "cheese" value = "<?php echo @$_POST['cheese'];?>">
+						<span id ="msg2" class = "glyphicon glyphicon-remove"></span>
+					</div>
+					<br>
 					<p>
-						<p><stgong>Логин</stgong></p>
-						<input type = "text" name = "sugar" value = "<?php echo @$_POST['sugar'];?>">
-					</p>
-					
-					<p>
-						<p><stgong>Пароль</stgong></p>
-						<input type = "password" name = "cheese" value = "<?php echo @$_POST['cheese'];?>">
-					</p>
-					
-					<p>
-						<button type = "submit" name = "go" class="btn btn-primary">Войти</button>
+						<button type = "submit" id="Abut" disabled = "false" name = "go" class="btn btn-primary">Войти</button>
 					</p>
 				</form>
 			
 				<!------------------------------ Переход к Регистрации------------------------->
-				<a type="button"  href="/signup.php">Регистрация</a>
+				<h6>Если у вас нет аккаунта, вы можете создать его, перейдя по ссылке <br>
+				<a type="button"  href="/signup.php">Регистрация</a></h6>
 			</center>
 		<?php endif; ?>
 
 		<script src = "ajax.js"></script>
 		<script src="js/dropdown.js"></script>
 		<script src="dist/css/bootstrap.min.js"></script>
+		<script src = "Auto-registr.js"></script>
 	</body>
 </html>

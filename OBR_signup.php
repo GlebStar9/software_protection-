@@ -22,7 +22,7 @@
 		}
 		if($records)
 		{
-			throw new Exception('Пользователь с таким логином занят');
+			throw new Exception('Пользователь с таким логином уже существует');
 		}
 			
 		return true;

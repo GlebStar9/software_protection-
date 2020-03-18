@@ -1,3 +1,4 @@
+//Проверка формы регистрации
 function proverka()
 {
 	var Value = $('#sugar').val();
@@ -65,3 +66,60 @@ $('#tomato').keyup(function(){
 	}
 	proverka();
 });
+
+//Проверка формы авторизации
+
+function Aproverka() // Блокировка кнопки ,если поля не заполнены
+{
+	var Value1 = $('#Asugar').val();
+	var Value2 = $('#Acheese').val();
+	if( Value1 != 0 && Value2 != 0)
+	{
+		$('#Abut').attr('disabled', false);
+	}
+	else 
+	{
+		$('#Abut').attr('disabled', true);
+	}
+}
+
+$('#Asugar').keyup(function(){
+	var Value = $('#Asugar').val();
+	if(Value == 0)
+	{
+		//$('#errmsg').text("введите значения");
+		$('#Alog').removeClass("has-success").addClass("has-error");
+		$('#msg1').removeClass("glyphicon glyphicon-ok").addClass("glyphicon glyphicon-remove");
+	}
+	else 
+	{
+		//$('#errmsg').text("");
+		$('#Alog').removeClass("has-error").addClass("has-success");
+		$('#msg1').removeClass("glyphicon glyphicon-remove").addClass("glyphicon glyphicon-ok");
+	}
+	Aproverka();
+});
+
+
+$('#Acheese').keyup(function(){
+	var Value = $('#Acheese').val();
+	if(Value == 0)
+	{
+		$('#Apor').removeClass("has-success").addClass("has-error");
+		$('#msg2').removeClass("glyphicon glyphicon-ok").addClass("glyphicon glyphicon-remove");
+	}
+	else 
+	{
+		$('#Apor').removeClass("has-error").addClass("has-success");
+		$('#msg2').removeClass("glyphicon glyphicon-remove").addClass("glyphicon glyphicon-ok");
+	}
+	Aproverka();
+});
+
+
+
+
+
+
+
+
