@@ -1,74 +1,29 @@
-<?php include "Table_maslo.php"; ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="dist/css/bootstrap.min.css" >	
+	<link rel="stylesheet" href="dist/css/bootstrap.min.css" >		
+	<link rel="stylesheet" href="css/Style.css">	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="css/Style.css"> 
-<?php
-	
-	// -----------------------------------Обработчик формы регитсрации-----------------------------
-	if(isset($_POST['go']))
-	{
-		if(trim ($_POST['sugar'])=='') // проверка логина
-		{
-			$errors[]='Введите логин!';
-		}
-		if($_POST['cheese']=='')  // проверка пароля 
-		{
-			$errors[]='Введите пароль!';
-		}
-		if($_POST['tomato'] != $_POST['cheese']) // проверка пароля с повторным паролем
-		{
-			$errors[]='Повторный пароль введен не верно ';
-		}
-		//Проверка существования ЛОГИНА
-		$sug = $_POST['sugar'];
-		$res = $bd_xleb->query("SELECT login FROM maslo WHERE login = '$sug'");
-		$records = $res->fetchall(PDO::FETCH_ASSOC);
-		if($records) 
-		{
-			$errors[]='Пользователь с таким логином уже занят';
-		}
-		//Условие на нахождение ошибок, если нет, то проводим регистрацию 
-		if(empty($errors))
-		{
-			// все хорошо
-			$sug  = $_POST['sugar'];
-			$ches = password_hash($_POST['cheese'],PASSWORD_DEFAULT);
-			$res = $bd_xleb->query("insert into maslo (login, password) values ('$sug ', '$ches')");
-			echo '<div style = "color: green;">'."Регистрация прошла успешно!".'</div><hr>';
-			include "index.php";
-			exit;	
-		}
-		else
-		{
-			echo '<div style = "color: red;">';
-			foreach($errors as $a)echo $a.'<br>'; 
-			echo '</div><hr>';
-		}
-	}
-?>
+      <!-----------------------Форма заполения поля регитсрации----------------------------->
 <center>
-          <!-----------------------Форма заполения поля регитсрации----------------------------->
-<form action="/signup.php" method = "POST"> 
-
-	<p>
-		<p><stgong>Логин</stgong></p>
-		<input type = "text" name = "sugar" value = "<?php echo @$_POST['sugar'];?>">
-	</p>
-	
-	<p>
-		<p><stgong>Пароль</stgong></p>
-		<input type = "password" name = "cheese" value = "<?php echo @$_POST['cheese'];?>">
-	</p>
-	
-	<p>
-		<p><stgong>Введите пароль повторно</stgong></p>
-		<input type = "password" name = "tomato" value = "<?php echo @$_POST['tomato'];?>">
-	</p>
-	
-	<p>
-		<button type = "submit" name = "go" class="btn btn-primary">Зарегистрироваться</button>
-	</p>
-</form>
+	<form  action="/OBR_signup.php" method = "POST"> 
+		<div id = "log" class = "has-error">
+			<input type = "text"  placeholder="Введите логин" id ="sugar" name = "sugar" value = "<?php echo @$_POST['sugar'];?>">
+			<span id ="gly1" class = "glyphicon glyphicon-remove"></span>
+		</div>
+		<br>
+		<div id = "por" class = "has-error">
+			<input type = "password" placeholder="Введите пароль" id = "cheese" name = "cheese" value = "<?php echo @$_POST['cheese'];?>">
+			<span id ="gly2" class = "glyphicon glyphicon-remove"></span>
+		</div>
+		<br>
+		<div id = "por2" class = "has-error">
+			<input type = "password" placeholder="Введите повторный пароль" size="24" id = "tomato" name = "tomato" value = "<?php echo @$_POST['tomato'];?>">
+			<span id ="gly3" class = "glyphicon glyphicon-remove"></span>
+		</div> 
+		<br>
+		<div>
+			<button id="but" disabled = "false" type = "submit" name = "go" class="btn btn-primary">Зарегистрироваться</button>
+		</div>
+	</form>
 </center>
 <script src="dist/css/bootstrap.min.js"></script>
+<script src = "Auto-registr.js"></script>
