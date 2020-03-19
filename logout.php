@@ -1,4 +1,6 @@
 <?php 
-	setcookie("user", 10, time()-3600, "/");
+	$agent=$_SERVER['HTTP_USER_AGENT'];
+	setcookie("user", $agent, time()-3600, "/");
+	include "stat.php";
 	header('Location: /');
 ?>

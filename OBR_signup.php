@@ -22,7 +22,7 @@
 		}
 		if($records)
 		{
-			throw new Exception('Пользователь с таким логином уже существует');
+			throw new Exception('Пользователь с таким логином занят');
 		}
 			
 		return true;
@@ -40,8 +40,11 @@
 			$res = $bd_xleb->query("insert into maslo (login, password) values ('$sug ', '$ches')");
 			include "index.php";
 			exit;	
-		}catch(Exception $e){		
+		}catch(Exception $e){	
+			header("HTTP/1.0 401");		
 			echo '<center><div style = "color: red;">'.$e->getMessage().'</div></center><hr>';
+			include "signup.php";
+			exit;
 		}
 	}
 ?>

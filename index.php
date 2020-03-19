@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <title>База данных</title>
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="stylesheet" href="dist/css/bootstrap.min.css" >		
-		<link rel="stylesheet" href="css/Style.css">		
+		<link rel="stylesheet" href="dist/css/bootstrap.min.css" >
+		<link rel="stylesheet" href="CSS/Style.css">	
     </head>
 	
 	<body>
@@ -55,10 +55,11 @@
 		<!-----------------------Если мы еще не атаризованы ----------------------------->
 		<?php else: ?>
 			<center>
+				
 				<!------------------------------ Форма Авторизация -------------------------->
 				<form action="autorise.php" method = "POST"> 
-					<h3>Добро пожаловать на наш сайт!</h3>
-					<p><h5>Авторизируйтесь, чтобы начать работу</h5></p><br><br><br>
+					<div><h3>Добро пожаловать на наш сайт!</h3> </div>
+					<div class ="sty1"><h5>Авторизируйтесь, чтобы начать работу</h5></div>
 					<div id = "Alog" class = "has-error">
 						<!---<p><stgong>Логин</stgong></p>--->
 						<input type = "text" placeholder="Введите логин" id ="Asugar" name = "sugar" value = "<?php echo @$_POST['sugar'];?>">

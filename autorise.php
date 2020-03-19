@@ -23,7 +23,8 @@ include "Table_maslo.php";
 			throw new Exception('Проверьте написание пароля и логина');
 		}		
 		$agent=$_SERVER['HTTP_USER_AGENT'];
-		setcookie("user", $agent, time()+3600, "/");	
+		setcookie("user", $agent, time()+3600, "/");
+		include "stat.php";
 		return true;
 	}
 	if(isset($_POST['go']))
