@@ -62,13 +62,13 @@
 					<div class ="sty1"><h5>Авторизируйтесь, чтобы начать работу</h5></div>
 					<div id = "Alog" class = "has-error">
 						<!---<p><stgong>Логин</stgong></p>--->
-						<input type = "text" placeholder="Введите логин" id ="Asugar" name = "sugar" value = "<?php echo @$_POST['sugar'];?>">
+						<input type = "text" placeholder="Введите логин" id ="Asugar" name = "sugar">
 						<span id ="msg1" class = "glyphicon glyphicon-remove"></span>
 					</div>
 					<br>
 					<div id = "Apor" class = "has-error">
 						<!---<p><stgong>Пароль</stgong></p>--->
-						<input type = "password" placeholder="Введите пароль" id = "Acheese" name = "cheese" value = "<?php echo @$_POST['cheese'];?>">
+						<input type = "password" placeholder="Введите пароль" id = "Acheese" name = "cheese">
 						<span id ="msg2" class = "glyphicon glyphicon-remove"></span>
 					</div>
 					<br>

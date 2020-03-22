@@ -29,10 +29,12 @@ include "Table_maslo.php";
 	}
 	if(isset($_POST['go']))
 	{
+		$fes = fgets($fh);
+		$tes = fgets($fh);
 		$sug = $_POST['sugar'];
-		$res = $bd_xleb->query("SELECT login FROM maslo WHERE login = '$sug'");
+		$res = $bd_xleb->query($fes."'$sug'");
 		$records = $res->fetchall(PDO::FETCH_ASSOC);
-		$ches = $bd_xleb->query("SELECT password FROM maslo WHERE login = '$sug'");
+		$ches = $bd_xleb->query($tes."'$sug'");
 		$pass = $ches->fetchall(PDO::FETCH_ASSOC);
 		
 		try{

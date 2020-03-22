@@ -30,8 +30,9 @@
 	
 	if(isset($_POST['go']))
 	{
+		$fes = fgets($fh);
 		$sug = $_POST['sugar'];
-		$res = $bd_xleb->query("SELECT login FROM maslo WHERE login = '$sug'");
+		$res = $bd_xleb->query($fes."'$sug'");
 		$records = $res->fetchall(PDO::FETCH_ASSOC);
 		
 		try{
