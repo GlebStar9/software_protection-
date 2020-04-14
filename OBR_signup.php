@@ -1,40 +1,6 @@
 <?php
 	include "Table_maslo.php";
-	// -----------------------------------Обработчик формы регитсрации-----------------------------
-	
-	function registr(array $records)
-	{		
-		if(trim ($_POST['sugar'])=='')
-		{
-			throw new Exception('Введите логин!');
-		}
-		if($records)
-		{
-			throw new Exception('Пользователь с таким логином уже cуществует');
-		}
-		if(strip_data($_POST['sugar'])!=$_POST['sugar'])
-		{
-			throw new Exception('В логине присутствуют недопустимые символы: "*", "%", "<", ">", "?", "!", "+", "#"');
-		}
-		if($_POST['cheese']=='') 
-		{
-			throw new Exception('Введите пароль!');
-		}
-		if(strip_data($_POST['cheese'])!=$_POST['cheese'])
-		{
-			throw new Exception('В пароле присутствуют недопустимые символы: "*", "%", "<", ">", "?", "!", "+", "#"');
-		}
-		if($_POST['tomato']=='') 
-		{
-			throw new Exception('Введите поворный пароль!');
-		}
-		if($_POST['tomato'] != $_POST['cheese'])
-		{
-			throw new Exception('Повторный пароль введен не верно');
-		}	
-		
-		return true;
-	}
+	include "dictionary.php";
 	
 	if(isset($_POST['go']))
 	{
@@ -56,15 +22,5 @@
 			exit;
 		}
 	}
-	function strip_data($text) // фильтрация строки
-		{
-		$quotes = array ("\x27", "\x22", "\x60", "\t", "\n", "\r", "*", "%", "<", ">", "?", "!" );
-		$goodquotes = array ("+", "#", " " );
-		$repquotes = array ("\+", "\#" );
-		$text = trim( strip_tags( $text ) );
-		$text = str_replace( $quotes, '', $text );
-		$text = str_replace( $goodquotes, $repquotes, $text );
-
-		return $text;
-		}
+	
 ?>
