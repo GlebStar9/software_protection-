@@ -1,24 +1,28 @@
 <?php
-		function strip_data($text) // фильтрация строки
-		{
-		$quotes = array ("\x27", "\x22", "\x60", "\t", "\n", "\r", "*", "%", "<", ">", "?", "!" );
-		$goodquotes = array ("+", "#", " " );
-		$repquotes = array ("\+", "\#" );
-		$text = trim( strip_tags( $text ) );
-		$text = str_replace( $quotes, '', $text );
-		$text = str_replace( $goodquotes, $repquotes, $text );
 
-		return $text;
-		}
+		//function strip_data($text) // фильтрация строки 
+		//{
+		//$quotes = array ("\x27", "\x22", "\x60", "\t", "\n", "\r", "*", "%", "<", ">", "?", "!" );
+		//$goodquotes = array ("+", "#", " " );
+		//$repquotes = array ("\+", "\#" );
+		//$text = trim( strip_tags( $text ) );
+		//$text = str_replace( $quotes, '', $text );
+		//$text = str_replace( $goodquotes, $repquotes, $text );
+
+		//return $text;
+		//}
+
+
+		// фильтрация строки заменина с function strip_data($text) на filter_var()
 		// -----------------------------------Обработчик формы регитсрации-----------------------------
-	
+
 		function registr(array $records)
 		{		
 			if(trim ($_POST['sugar'])=='')
 			{
 				throw new Exception('Введите логин!');
 			}
-			if(strip_data($_POST['sugar'])!=$_POST['sugar'])
+			if(filter_var($_POST['sugar'],FILTER_SANITIZE_URL,FILTER_SANITIZE_FULL_SPECIAL_CHARS)!=$_POST['sugar'])
 			{
 				throw new Exception('В логине присутствуют недопустимые символы: "*", "%", "<", ">", "?", "!", "+", "#"');
 			}
@@ -31,7 +35,7 @@
 			{
 				throw new Exception('Введите пароль!');
 			}
-			if(strip_data($_POST['cheese'])!=$_POST['cheese'])
+			if(filter_var($_POST['cheese'],FILTER_SANITIZE_URL,FILTER_SANITIZE_FULL_SPECIAL_CHARS)!=$_POST['cheese'])
 			{
 				throw new Exception('В пароле присутствуют недопустимые символы: "*", "%", "<", ">", "?", "!", "+", "#"');
 			}

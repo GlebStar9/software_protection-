@@ -4,14 +4,13 @@
 	
 	if(isset($_POST['go']))
 	{
-		$sug = strip_data($_POST['sugar']);
-		$sug = htmlspecialchars($sug);
+		$sug = filter_var($_POST['sugar'],FILTER_SANITIZE_URL,FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$res = $bd_xleb->query(" SELECT login FROM maslo WHERE login ='$sug'");
 		$records = $res->fetchall(PDO::FETCH_ASSOC);
 		
 		try{
 			registr($records);
-			$ches = password_hash(htmlspecialchars(strip_data($_POST['cheese'])),PASSWORD_DEFAULT);
+			$ches = password_hash(htmlspecialchars(filter_var($_POST['cheese'],FILTER_SANITIZE_URL,FILTER_SANITIZE_FULL_SPECIAL_CHARS)),PASSWORD_DEFAULT);
 			$res = $bd_xleb->query("insert into maslo (login, password) values ('$sug ', '$ches')");
 			include "index.php";
 			exit;	
