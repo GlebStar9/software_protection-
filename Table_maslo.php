@@ -1,5 +1,5 @@
 <?php
-	$fh = fopen("C:/DISK D/testo.txt", "r");
+	$fh = fopen('..\..\testo.txt', "r");
     list($f1,$f2,$f3)= fscanf($fh, "%s %s %s");
 	$h_xleb = "$f1";
     $db_name_xleb = "$f2";
