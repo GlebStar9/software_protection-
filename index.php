@@ -58,23 +58,25 @@
 				
 				<!------------------------------ Форма Авторизация -------------------------->
 				<form action="autorise.php" method = "POST"> 
-					<div><h3>Добро пожаловать на наш сайт!</h3> </div>
-					<div class ="sty1"><h5>Авторизируйтесь, чтобы начать работу</h5></div>
-					<div id = "Alog" class = "has-error">
-						<!---<p><stgong>Логин</stgong></p>--->
-						<input type = "text" placeholder="Введите логин" id ="Asugar" name = "sugar">
-						<span id ="msg1" class = "glyphicon glyphicon-remove"></span>
+					<h3>Добро пожаловать на наш сайт!</h3>
+					<h5>Авторизируйтесь, чтобы начать работу</h5>
+					<div class = "sty1">
+						<div id = "Alog" class = "has-error">
+							<!---<p><stgong>Логин</stgong></p>--->
+							<input type = "text" placeholder="Введите логин" id ="Asugar" name = "sugar">
+							<span id ="msg1" class = "glyphicon glyphicon-remove"></span>
+						</div>
+						<br>
+						<div id = "Apor" class = "has-error">
+							<!---<p><stgong>Пароль</stgong></p>--->
+							<input type = "password" placeholder="Введите пароль" id = "Acheese" name = "cheese">
+							<span id ="msg2" class = "glyphicon glyphicon-remove"></span>
+						</div>
+						<br>
+						<p>
+							<button type = "submit" id="Abut" disabled = "false" name = "go" class="btn btn-primary">Войти</button>
+						</p>
 					</div>
-					<br>
-					<div id = "Apor" class = "has-error">
-						<!---<p><stgong>Пароль</stgong></p>--->
-						<input type = "password" placeholder="Введите пароль" id = "Acheese" name = "cheese">
-						<span id ="msg2" class = "glyphicon glyphicon-remove"></span>
-					</div>
-					<br>
-					<p>
-						<button type = "submit" id="Abut" disabled = "false" name = "go" class="btn btn-primary">Войти</button>
-					</p>
 				</form>
 			
 				<!------------------------------ Переход к Регистрации------------------------->
